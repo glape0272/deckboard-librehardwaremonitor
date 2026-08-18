@@ -1,0 +1,115 @@
+{
+  "id": 0,
+  "Version": "0.9.6",
+  "Text": "Sensor",
+  "Min": "Min",
+  "Value": "Value",
+  "Max": "Max",
+  "ImageURL": "",
+  "Children": [
+    {
+      "id": 1,
+      "Text": "DESKTOP-TEST",
+      "Min": "",
+      "Value": "",
+      "Max": "",
+      "ImageURL": "images_icon/computer.png",
+      "Children": [
+        {
+          "id": 2,
+          "Text": "AMD Ryzen 9 5900XT",
+          "Min": "",
+          "Value": "",
+          "Max": "",
+          "HardwareId": "/amdcpu/0",
+          "ImageURL": "images_icon/cpu.png",
+          "Children": [
+            {
+              "id": 3,
+              "Text": "Temperatures",
+              "Min": "",
+              "Value": "",
+              "Max": "",
+              "ImageURL": "images_icon/temperature.png",
+              "Children": [
+                {
+                  "id": 4,
+                  "Text": "CPU Package",
+                  "Min": "42.0 °C",
+                  "Value": "62.5 °C",
+                  "Max": "70.0 °C",
+                  "SensorId": "/amdcpu/0/temperature/0",
+                  "Type": "Temperature",
+                  "RawMin": 42.0,
+                  "RawValue": 62.5,
+                  "RawMax": 70.0,
+                  "ImageURL": "images/transparent.png",
+                  "Children": []
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "Text": "Load",
+              "Min": "",
+              "Value": "",
+              "Max": "",
+              "ImageURL": "images_icon/load.png",
+              "Children": [
+                {
+                  "id": 6,
+                  "Text": "CPU Total",
+                  "Min": "1.0 %",
+                  "Value": "38.4 %",
+                  "Max": "100.0 %",
+                  "SensorId": "/amdcpu/0/load/0",
+                  "Type": "Load",
+                  "RawMin": 1.0,
+                  "RawValue": 38.4,
+                  "RawMax": 100.0,
+                  "ImageURL": "images/transparent.png",
+                  "Children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "Text": "NVIDIA GeForce RTX 5070",
+          "Min": "",
+          "Value": "",
+          "Max": "",
+          "HardwareId": "/gpu-nvidia/0",
+          "ImageURL": "images_icon/nvidia.png",
+          "Children": [
+            {
+              "id": 8,
+              "Text": "Fans",
+              "Min": "",
+              "Value": "",
+              "Max": "",
+              "ImageURL": "images_icon/fan.png",
+              "Children": [
+                {
+                  "id": 9,
+                  "Text": "GPU Fan",
+                  "Min": "0 RPM",
+                  "Value": "1350 RPM",
+                  "Max": "1800 RPM",
+                  "SensorId": "/gpu-nvidia/0/fan/0",
+                  "Type": "Fan",
+                  "RawMin": 0,
+                  "RawValue": 1350,
+                  "RawMax": 1800,
+                  "ImageURL": "images/transparent.png",
+                  "Children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

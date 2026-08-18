@@ -1,16 +1,35 @@
 {
-    "name": "dekboard-librehardwaremonitor",
-    "version": "1.0.0",
-    "description": "Display hardware status from Libre Hardware Monitor on Deckboard button",
-    "main": "index.js",
-    "scripts": {
-        "build": "deckboard-kit --build",
-        "install": "deckboard-kit --install"
-    },
-    "author": "Riva Farabi",
-    "license": "MIT",
-    "dependencies": {
-        "deckboard-kit": "^0.3.0",
-        "node-wmi": "0.0.5"
-    }
+  "name": "deckboard-librehardwaremonitor",
+  "version": "2.0.0",
+  "description": "Display LibreHardwareMonitor sensor data on Deckboard using the HTTP data API",
+  "main": "index.js",
+  "scripts": {
+    "build": "deckboard-kit --build",
+    "install:deckboard": "deckboard-kit --install",
+    "check": "node --check index.js && node --check lib/lhm-client.js",
+    "test": "node --test",
+    "validate": "npm run check && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glape0272/deckboard-librehardwaremonitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/glape0272/deckboard-librehardwaremonitor/issues"
+  },
+  "homepage": "https://github.com/glape0272/deckboard-librehardwaremonitor#readme",
+  "author": "Riva Farabi",
+  "contributors": [
+    "glape0272"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "deckboard-kit": "0.3.0"
+  },
+  "devDependencies": {
+    "deckboard-kit-cli": "^1.1.3"
+  }
 }

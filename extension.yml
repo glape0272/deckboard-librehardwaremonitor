@@ -1,7 +1,7 @@
 name: Libre Hardware Monitor
 package: libre-hardware-monitor
-version: 1.0.0
-description: Display hardware status from Libre Hardware Monitor on Deckboard button
-author: Riva Farabi
+version: 2.0.0
+description: Display LibreHardwareMonitor sensor data on Deckboard through the Remote Web Server API
+author: Riva Farabi / glape0272
 license: MIT
-repository: "https://github.com/rivafarabi/deckboard-librehardwaremonitor"
+repository: "https://github.com/glape0272/deckboard-librehardwaremonitor"
