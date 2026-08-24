@@ -1,6 +1,6 @@
 name: Libre Hardware Monitor
 package: libre-hardware-monitor
-version: 2.0.0
+version: 2.0.1
 description: Display LibreHardwareMonitor sensor data on Deckboard through the Remote Web Server API
 author: Riva Farabi / glape0272
 license: MIT

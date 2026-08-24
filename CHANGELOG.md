@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 - 2026-08-25
+
+- Added compatibility with unit-bearing `RawValue` fields emitted by
+  LibreHardwareMonitor 0.9.6.
+- Added fallback parsing from the formatted `Value` field.
+- Preserved base units for dynamically scaled throughput, frequency, and clock
+  values.
+
 ## 2.0.0 - 2026-08-19
 
 - Replaced the removed LibreHardwareMonitor WMI provider with `/data.json` HTTP

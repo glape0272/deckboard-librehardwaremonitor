@@ -13,6 +13,7 @@ const {
 	flattenSensors,
 	normalizeDataUrl,
 	toDeckboardSensorId,
+	toSensorNumber,
 } = require('../lib/lhm-client');
 
 const fixture = JSON.parse(
@@ -39,6 +40,14 @@ test('flattenSensors preserves the nearest hardware context', () => {
 	});
 
 	assert.equal(sensors[2].hardwareName, 'NVIDIA GeForce RTX 5070');
+});
+
+test('toSensorNumber supports unit-bearing RawValue values from version 0.9.6', () => {
+	assert.equal(toSensorNumber('46.9 °C', '46.9 °C', 'Temperature'), 46.9);
+	assert.equal(toSensorNumber('1.5 MB/s', '1.5 MB/s', 'Throughput'), 1572864);
+	assert.equal(toSensorNumber('2,4 GHz', '2,4 GHz', 'Clock'), 2400);
+	assert.equal(toSensorNumber(undefined, '1350 RPM', 'Fan'), 1350);
+	assert.equal(toSensorNumber('NaN', 'NaN °C', 'Temperature'), null);
 });
 
 test('buildDeckboardValues keeps legacy sensor keys and sensor-specific precision', () => {

@@ -5,6 +5,8 @@ LibreHardwareMonitor sensors as Deckboard graph blocks.
 
 Version 2 replaces the removed WMI provider with LibreHardwareMonitor's Remote
 Web Server JSON endpoint, so it works with LibreHardwareMonitor 0.9.6 and later.
+It also accepts the unit-bearing `RawValue` fields emitted by the 0.9.6 web
+server and converts dynamically scaled values back to stable base units.
 
 ## Changes from the original extension
 

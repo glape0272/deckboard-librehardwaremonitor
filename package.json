@@ -1,6 +1,6 @@
 {
   "name": "deckboard-librehardwaremonitor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Display LibreHardwareMonitor sensor data on Deckboard using the HTTP data API",
   "main": "index.js",
   "scripts": {
