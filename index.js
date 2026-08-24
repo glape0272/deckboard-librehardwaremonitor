@@ -8,6 +8,9 @@ const {
 	fetchLibreHardwareMonitorData,
 	flattenSensors,
 } = require('./lib/lhm-client');
+const {
+	fetchLibreHardwareMonitorWmiData,
+} = require('./lib/lhm-wmi-client');
 
 const { Extension, log } = deckboardKit;
 const INPUT_METHOD = deckboardKit.INPUT_METHOD || {};
@@ -19,6 +22,19 @@ const WINDOWS = PLATFORMS.WINDOWS || 'WINDOWS';
 
 const DEFAULT_POLL_INTERVAL_SECONDS = 5;
 const DEFAULT_REQUEST_TIMEOUT_MS = 3000;
+const WMI_CONNECTION_DESCRIPTION = 'root\\LibreHardwareMonitor';
+
+/**
+ * Normalize errors from HTTP and WMI clients for stable log deduplication.
+ *
+ * @param {unknown} error
+ * @returns {string}
+ */
+function getErrorMessage(error) {
+	return error && typeof error === 'object' && 'message' in error
+		? String(error.message)
+		: String(error);
+}
 
 function clampNumber(value, fallback, minimum, maximum) {
 	const parsed = Number(value);
@@ -76,6 +92,7 @@ class LibreHardwareMonitor extends Extension {
 		this.lastSensorOptionSignature = '';
 		this.lastErrorMessage = '';
 		this.hasConnected = false;
+		this.activeDataSource = '';
 		this.currentConfigSignature = '';
 
 		this.setInputOptions([], [], []);
@@ -172,26 +189,61 @@ class LibreHardwareMonitor extends Extension {
 		this.pollInProgress = true;
 
 		try {
-			const { payload, url } = await fetchLibreHardwareMonitorData(config);
-			const sensors = flattenSensors(payload);
+			let sensors;
+			let source = 'http';
+			let connectionDescription = '';
 
-			this.refreshSensorInputs(sensors);
-			this.setValue(buildDeckboardValues(sensors));
-
-			if (!this.hasConnected || this.lastErrorMessage) {
+			try {
+				const { payload, url } = await fetchLibreHardwareMonitorData(config);
+				sensors = flattenSensors(payload);
+				if (sensors.length === 0) {
+					throw new Error(
+						'HTTP endpoint returned no LibreHardwareMonitor sensors'
+					);
+				}
 				const version =
 					payload && typeof payload === 'object' && payload.Version
 						? ` v${payload.Version}`
 						: '';
-				log.info(
-					`[Libre Hardware Monitor] Connected to ${url.origin}${version}; ${sensors.length} sensors discovered.`
-				);
+				connectionDescription = `${url.origin}${version}`;
+			} catch (httpError) {
+				try {
+					sensors = await fetchLibreHardwareMonitorWmiData();
+					source = 'wmi';
+					connectionDescription = WMI_CONNECTION_DESCRIPTION;
+				} catch (wmiError) {
+					throw new Error(
+						`HTTP acquisition failed (${getErrorMessage(httpError)}); ` +
+							`legacy WMI fallback failed (${getErrorMessage(wmiError)})`
+					);
+				}
 			}
 
+			this.refreshSensorInputs(sensors);
+			this.setValue(buildDeckboardValues(sensors));
+
+			if (
+				!this.hasConnected ||
+				this.lastErrorMessage ||
+				this.activeDataSource !== source
+			) {
+				const sourceLabel = source === 'http' ? 'HTTP' : 'legacy WMI';
+				const logMessage =
+					`[Libre Hardware Monitor] Connected through ${sourceLabel} ` +
+					`at ${connectionDescription}; ${sensors.length} sensors discovered.`;
+
+				if (source === 'wmi') {
+					log.warn(logMessage);
+				} else {
+					log.info(logMessage);
+				}
+			}
+
+			this.activeDataSource = source;
 			this.hasConnected = true;
 			this.lastErrorMessage = '';
 		} catch (error) {
-			const message = error && error.message ? error.message : String(error);
+			const message = getErrorMessage(error);
 			if (message !== this.lastErrorMessage) {
 				log.error(`[Libre Hardware Monitor] ${message}`);
 				this.lastErrorMessage = message;

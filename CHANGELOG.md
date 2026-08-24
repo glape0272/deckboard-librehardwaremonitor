@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0 - 2026-08-25
+
+- Added automatic fallback to the legacy `root\\LibreHardwareMonitor` WMI
+  provider when the Remote Web Server endpoint is unavailable.
+- Added automatic recovery to HTTP acquisition when the endpoint becomes
+  available again.
+- Preserved sensor IDs and Deckboard button compatibility across both sources.
+
 ## 2.0.1 - 2026-08-25
 
 - Added compatibility with unit-bearing `RawValue` fields emitted by

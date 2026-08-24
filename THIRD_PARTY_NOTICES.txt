@@ -15,6 +15,10 @@ Runtime dependency:
   License: MIT
   Source: https://github.com/rivafarabi/deckboard-kit
 
+  node-wmi 0.0.5
+  License: MIT
+  Source: https://github.com/jpgrusling/node-wmi
+
 Development-only packaging dependency:
 
   deckboard-kit-cli
@@ -29,6 +33,7 @@ extension):
   License: Mozilla Public License 2.0
   Source: https://github.com/LibreHardwareMonitor/LibreHardwareMonitor
 
-This extension communicates with LibreHardwareMonitor only through its local
-HTTP Remote Web Server API. No LibreHardwareMonitor source or binary code is
-included in this repository or in the built Deckboard extension.
+This extension communicates with LibreHardwareMonitor through its local HTTP
+Remote Web Server API or its legacy Windows WMI provider. No LibreHardwareMonitor
+source or binary code is included in this repository or in the built Deckboard
+extension.
