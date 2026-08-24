@@ -179,6 +179,6 @@ MIT。元の著作権・ライセンス表記とメンテナンス版の著作�
 
 LibreHardwareMonitorはMPL-2.0。LibreHardwareMonitorのソースコードやバイナリは
 本拡張機能へ同梱せず、HTTPまたはWMIの出力のみを利用。詳細は
-`THIRD_PARTY_NOTICES.txt`を参照
+`THIRD_PARTY_NOTICES.txt`と`THIRD_PARTY_LICENSES.txt`を参照
 
 本プロジェクトとDeckboard・LibreHardwareMonitor各メンテナーとの公式な提携・承認なし

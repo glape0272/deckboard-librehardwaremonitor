@@ -15,9 +15,42 @@ Runtime dependency:
   License: MIT
   Source: https://github.com/rivafarabi/deckboard-kit
 
+  electron-log 2.2.17
+  License: MIT
+  Source: https://github.com/megahertz/electron-log
+
   node-wmi 0.0.5
   License: MIT
   Source: https://github.com/jpgrusling/node-wmi
+
+  async 1.5.2
+  License: MIT
+  Source: https://github.com/caolan/async
+
+  debug 2.6.9
+  License: MIT
+  Source: https://github.com/debug-js/debug
+
+  ms 2.0.0
+  Copyright (c) 2016 Zeit, Inc.
+  License: MIT
+  Source: https://github.com/vercel/ms
+
+  xml2js 0.4.23
+  License: MIT
+  Source: https://github.com/Leonidas-from-XIV/node-xml2js
+
+  sax 1.6.1
+  License: Blue Oak Model License 1.0.0
+  Source: https://github.com/isaacs/sax-js
+
+  xmlbuilder 11.0.1
+  License: MIT
+  Source: https://github.com/oozcitak/xmlbuilder-js
+
+License files supplied by runtime packages are retained in the packaged
+extension. THIRD_PARTY_LICENSES.txt additionally preserves license texts that
+the Deckboard packaging tool would otherwise omit when removing Markdown files.
 
 Development-only packaging dependency:
 

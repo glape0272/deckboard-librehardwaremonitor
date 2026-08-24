@@ -199,7 +199,8 @@ copyright line for the maintained changes.
 LibreHardwareMonitor is licensed under MPL-2.0, but it is not redistributed or
 incorporated into this extension. The extension only consumes its HTTP or WMI
 output.
-See `THIRD_PARTY_NOTICES.txt` for attribution details.
+See `THIRD_PARTY_NOTICES.txt` and `THIRD_PARTY_LICENSES.txt` for attribution and
+bundled license details.
 
 This is a practical license assessment, not legal advice.
 
